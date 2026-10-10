@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>科技类竞赛年度时间线（1–12月）</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='5' width='26' height='24' rx='5' fill='%2310325e'/%3E%3Crect x='3' y='12' width='26' height='4' fill='%231a5fb4'/%3E%3Ccircle cx='11' cy='22' r='3' fill='%2337d0a5'/%3E%3Ccircle cx='18' cy='22' r='3' fill='%2337d0a5'/%3E%3Ccircle cx='25' cy='22' r='3' fill='%2337d0a5'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#f4f7fb; --ink:#1a2b45; --sub:#5c6c86; --line:#d7e0ec;
+    --navy:#10325e; --navy2:#1a5fb4; --accent:#16b391; --accent-soft:#e2f6f0;
+    --card:#ffffff; --chip-in:#eef3f9; --chip-g:#eef6f1; --chip-p:#f4eefb;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC","Helvetica Neue",sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  /* hero */
+  .hero{background:linear-gradient(135deg,#0c2547 0%,#143f74 55%,#1a5fb4 100%);color:#fff;padding:56px 0 44px}
+  .hero .wrap{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-end;justify-content:space-between}
+  .kicker{display:inline-block;font-size:13px;letter-spacing:2px;color:#8fd8c6;border:1px solid rgba(143,216,198,.4);border-radius:999px;padding:4px 14px;margin-bottom:14px}
+  h1{font-size:34px;font-weight:800;letter-spacing:.5px}
+  .hero p.sub{color:#c9d8ec;margin-top:10px;max-width:640px;font-size:15px}
+  .stats{display:flex;gap:28px;margin-top:8px}
+  .stats b{font-size:28px;font-weight:800;color:#37d0a5}
+  .stats span{display:block;font-size:12px;color:#a9bfdb;margin-top:2px}
+  /* 月份导航 */
+  nav.months{position:sticky;top:0;z-index:20;background:rgba(244,247,251,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:10px 0}
+  nav.months .wrap{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+  nav.months .wrap::-webkit-scrollbar{display:none}
+  nav.months a{flex:0 0 auto;text-decoration:none;color:var(--navy);font-size:13px;font-weight:600;padding:10px 16px;border:1px solid var(--line);border-radius:999px;background:#fff;transition:.2s;display:inline-flex;align-items:center;justify-content:center;min-height:20px}
+  nav.months a:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+  /* 时间线 */
+  .timeline{margin:48px 0 24px}
+  .legend{display:flex;flex-wrap:wrap;gap:10px 18px;margin-bottom:26px;font-size:12px;color:var(--sub)}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+  .month-row{display:grid;grid-template-columns:118px 44px 1fr;gap:0;align-items:start;margin-bottom:18px}
+  .m-label{position:sticky;top:64px;text-align:right;padding-right:16px;align-self:start}
+  .m-label .mo{font-size:26px;font-weight:800;color:var(--navy)}
+  .m-label .en{font-size:11px;color:#93a4bd;letter-spacing:1px}
+  .m-axis{display:flex;flex-direction:column;align-items:center;justify-self:center;height:100%;min-height:60px}
+  .m-axis .dot{width:16px;height:16px;border-radius:50%;background:var(--accent);border:4px solid var(--accent-soft);flex:0 0 auto;margin-top:6px;box-shadow:0 0 0 2px #fff}
+  .m-axis .stem{flex:1;width:3px;background:linear-gradient(to bottom,var(--accent) 0%,var(--line) 100%);border-radius:2px;min-height:36px;margin-top:6px}
+  .m-cards{display:grid;gap:10px}
+  /* 比赛卡片 */
+  .c{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;gap:6px;transition:.18s;box-shadow:0 1px 2px rgba(16,50,94,.05)}
+  .c:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(16,50,94,.10);border-color:#b9c9dd}
+  .c-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+  .c-name{font-size:15px;font-weight:700}
+  .chip{font-size:11px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap}
+  .chip.in{background:var(--chip-in);color:var(--navy2)}
+  .chip.g{background:var(--chip-g);color:#167a62}
+  .chip.p{background:var(--chip-p);color:#6d4bb8}
+  .c-time{font-size:12.5px;color:var(--sub)}
+  .c-time b{color:var(--accent);font-weight:600;margin-right:4px}
+  .c-host{font-size:12px;color:#8494ac}
+  .c-foot{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .c-link{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--navy2);text-decoration:none;border:1px solid #c3d4e8;border-radius:999px;padding:6px 12px;transition:.18s;min-height:20px}
+  .c-link:hover{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+  .c-nolink{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:#9aa9bf;border:1px dashed #c9d4e2;border-radius:999px;padding:6px 12px}
+  /* 待定区块 */
+  .pending{margin:40px 0;background:#fff8ef;border:1px solid #f0dcbc;border-radius:14px;padding:22px 24px}
+  .pending h2{font-size:18px;color:#8a5a14;margin-bottom:14px}
+  .pending .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+  .pending .c{border-color:#eeddbf;background:#fffdf8}
+  .note{font-size:12.5px;color:var(--sub);line-height:1.8}
+  footer{background:var(--navy);color:#b9c9dd;padding:26px 0;margin-top:48px;font-size:12.5px}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+  /* 空月份 */
+  .empty{font-size:13px;color:#a0aec2;font-style:italic;padding:6px 0}
+  @media (max-width:720px){
+    h1{font-size:26px}
+    .hero{padding:44px 0 34px}
+    .month-row{grid-template-columns:72px 30px 1fr}
+    .m-label{position:static}
+    .m-label .mo{font-size:20px}
+    .m-label .en{font-size:9px}
+    .stats{gap:18px}
+    .stats b{font-size:22px}
+    .c-name{font-size:14px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="kicker">2026 · 大学生科技竞赛规划</span>
+      <h1>科技类竞赛年度时间线</h1>
+      <p class="sub">依据「科技类竞赛时间线汇总」整理：从 1 月到 12 月，标注每项比赛的举办时间、赛事级别、主办方与官网入口；时间以当年官网通知为准。</p>
+    </div>
+    <div class="stats">
+      <div><b>34</b><span>项科技竞赛</span></div>
+      <div><b>12</b><span>个月份覆盖</span></div>
+      <div><b>30</b><span>条官网直链</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="months">
+  <div class="wrap" id="monthNav"></div>
+</nav>
+
+<main class="wrap">
+  <section class="timeline" id="timeline"></section>
+
+  <section class="pending" id="pending">
+    <h2>时间以当年通知为准的竞赛</h2>
+    <div class="grid" id="pendingGrid"></div>
+    <p class="note" style="margin-top:14px">以上比赛在汇总表中未标注固定月份（或为长期/滚动举办），具体报名与赛程请以主办方当年官方通知为准。</p>
+  </section>
+
+  <section class="legend" id="legend">
+    <span><i style="background:var(--navy2)"></i>国家级 / 国际级</span>
+    <span><i style="background:var(--accent)"></i>省级 / 校级</span>
+    <span><i style="background:#b07ce8"></i>其他 / 暂无分级</span>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>数据来源：附件1.1 学生竞赛列表（公示版）＋计算机竞赛信息表（合并去重 34 项）</span>
+    <span>官网链接均经核实，点击卡片内链接直达官方页面</span>
+  </div>
+</footer>
+
+<script>
+/* ===== 竞赛数据（来自飞书表格「科技类竞赛时间线」，字段：名称/竞赛时间/报名时间/级别/主办/官网） ===== */
+var DATA = [
+  {name:'美国大学生数学建模竞赛（MCM/ICM）', time:'1月底-2月初', apply:'11月-次年1月', level:'国际级（国家级/省级/校级加分）', host:'美国数学及其应用联合会', url:'https://mcmicm.org.cn/', months:[1,2]},
+  {name:'全国大学生数学建模竞赛', time:'9月中上旬', apply:'7-8月', level:'省级/国家级', host:'中国工业与应用数学学会', url:'https://www.mcm.edu.cn/', months:[9]},
+  {name:'全国大学生信息安全竞赛', time:'以官网当年通知为准', apply:'以官网当年通知为准', level:'校级/省级/国家级', host:'中国互联网发展基金会', url:'http://www.ciscn.cn'},
+  {name:'ACM国际大学生程序设计大赛（ACM-ICPC）', time:'区域赛9月-12月', apply:'由各高校筛选', level:'校级/省级/国家级/国际级', host:'美国计算机协会', url:'https://icpc.global/', months:[9,10,11,12]},
+  {name:'中山大学程序设计校赛（ACM校赛）', time:'11月左右', apply:'10月左右', level:'校级', host:'中山大学', nourl:'报名：QQ群 1060435822；公众号 CSE信息时代', months:[11]},
+  {name:'中山大学程序设计新手赛', time:'4月左右', apply:'3月左右', level:'校级（加分参考院级）', host:'中山大学计算机学院', nourl:'公众号：CSE信息时代', months:[4]},
+  {name:'中山大学人工智能新手赛', time:'4月左右', apply:'4月左右', level:'校级（加分参考院级）', host:'中山大学计算机学院', nourl:'公众号：CSE信息时代', months:[4]},
+  {name:'中国大学生程序设计竞赛（CCPC）', time:'9月-11月', apply:'9月左右', level:'省级/国家级', host:'中国大学生程序设计竞赛组委会', url:'https://ccpc.io/', months:[9,10,11]},
+  {name:'大学生计算机系统与程序设计竞赛（CCSP竞赛）', time:'10月左右', apply:'11月左右', level:'国家级', host:'中国计算机学会', url:'https://ccsp.ccf.org.cn/ccsp/', months:[10]},
+  {name:'全国大学生计算机系统能力大赛', time:'以官网当年通知为准', apply:'以官网当年通知为准', level:'国家级', host:'全国高等学校计算机教育研究会', url:'https://www.nscscc.com'},
+  {name:'“挑战杯”全国大学生课外学术科技作品竞赛', time:'10月-11月', apply:'前一年年底', level:'省级/国家级', host:'共青团中央、中国科协、教育部、全国学联和地方政府', url:'http://www.tiaozhanbei.net/', months:[10,11]},
+  {name:'中国“互联网+”大学生创新创业大赛', time:'10月', apply:'4月-7月', level:'省级/国家级', host:'教育部、中央统战部、中央网信办等', url:'https://cyc.ncss.org.cn/', months:[10]},
+  {name:'亚洲大学生超级计算机竞赛（ASC）', time:'12月左右', apply:'1-5月', level:'国际级（国家级加分）', host:'浪潮集团、国际超级计算机大会组委会、国际高性能计算咨询委员会', url:'https://www.asc-events.net/StudentChallenge/index.html', months:[12]},
+  {name:'中国机器人大赛', time:'以官网当年通知为准', apply:'以官网当年通知为准', level:'国家级（省级/国家级加分）', host:'中国自动化学会', url:'https://rcccaa.drct-caa.org.cn'},
+  {name:'亚太大学生机器人大赛国内选拔赛（ROBOCON）', time:'以官网当年通知为准', apply:'以官网当年通知为准', level:'国家级', host:'全国大学生机器人大赛组委会', url:'https://www.robocon.org.cn'},
+  {name:'“华为杯”程序设计竞赛', time:'12月-次年4月', apply:'11月左右', level:'省级（国家级加分）', host:'ICPC基金会（原表标注）', url:'https://www.huawei.com/minisite/ict-competition-2025-2026-global/cn/index.html', months:[12,1,2,3,4]},
+  {name:'国际基因工程机器大赛（iGEM）', time:'以官网当年通知为准', apply:'以官网当年通知为准（通常2-3月开放注册）', level:'国际级', host:'美国麻省理工学院', url:'https://competition.igem.org/'},
+  {name:'全国大学生物联网设计竞赛', time:'8月', apply:'3月-5月', level:'省级/国家级', host:'全国高等学校计算机教育研究会', url:'https://iot.sjtu.edu.cn/Default.aspx', months:[8]},
+  {name:'全国大学生软件测试大赛', time:'以官网当年通知为准（通常9-11月）', apply:'以官网当年通知为准', level:'省级/国家级', host:'教育部软件工程专业教学指导委员会、中国电子技术标准化研究院', url:'https://www.mooctest.org', months:[9,10,11]},
+  {name:'国际大学生超算竞赛（SC）', time:'11月（SC会议期间）', apply:'以官网当年通知为准', level:'国际级（国家级加分）', host:'浪潮集团、国际超级计算机大会组委会等', url:'https://sc26.supercomputing.org/students/student-cluster-competition/', months:[11]},
+  {name:'国际超算学生集群竞赛（ISC）', time:'以官网当年通知为准（通常6月）', apply:'以官网当年通知为准', level:'国际级（国家级加分）', host:'浪潮集团、国际超级计算机大会组委会等', url:'https://www.isc-hpc.com/', months:[6]},
+  {name:'全国大学生软件创新大赛—软件设计创新赛', time:'10月-次年1月', apply:'1月-4月', level:'省级（校级/省级加分）', host:'示范性软件学院联盟', url:'https://www.swcontest.com.cn/index', months:[10,11,12,1]},
+  {name:'花旗杯金融创新应用大赛', time:'一般在下半年', apply:'5-6月', level:'省级', host:'花旗金融信息服务', url:'https://citicup.dufe.edu.cn/'},
+  {name:'中国大学生计算机设计大赛', time:'7月-8月', apply:'3月-4月', level:'省级（校级/省级加分）', host:'中国大学生计算机设计大赛组织委员会', url:'https://jsjds.blcu.edu.cn/index.htm', months:[7,8]},
+  {name:'高校电气电子工程创新大赛', time:'以官网当年通知为准', apply:'以官网当年通知为准', level:'国家级（省级加分）', host:'中国电工技术学会', url:'https://eeeic.ces.org.cn'},
+  {name:'Bio-OS AI开源大赛', time:'以官网当年通知为准', apply:'以官网当年通知为准', level:'国家级（省级加分）', host:'广州国家实验室、清华大学ISCB-China', url:'https://www.bioos.ac.cn/'},
+  {name:'广东高校数据要素大赛（“数聚白云·智创未来”高校数据要素大赛）', time:'1月-6月', apply:'10月-1月', level:'省级（校级加分）', host:'广州市白云区政务服务和数据管理局', url:'https://economy.southcn.com/youyoushu', months:[1,2,3,4,5,6]},
+  {name:'开源鸿蒙社区开发奖励计划赛事', time:'以官网当年通知为准', apply:'以官网当年通知为准', level:'国家级（校级加分）', host:'中国计算机学会、开放原子开源基金会', url:'https://devbounty.openharmony.cn/'},
+  {name:'中国计算机学会（CCF）各专业委员会主办的学科竞赛', time:'以各专委会官网通知为准', apply:'以各专委会官网通知为准', level:'国家级（省级加分）', host:'中国计算机学会（CCF）各专业委员会', url:'https://www.ccf.org.cn/'},
+  {name:'海峡两岸暨港澳地区大学生计算机创新作品赛', time:'6月-7月', apply:'2月-4月', level:'暂无', host:'各省计算机学会等', url:'https://fssz.neu.edu.cn/', months:[6,7]},
+  {name:'中国高校计算机大赛-人工智能创意赛', time:'8月-12月', apply:'5月-8月', level:'暂无', host:'教育部高等学校计算机类专业教学指导委员会等', url:'http://aicontest.baidu.com/review.html', months:[8,9,10,11,12]},
+  {name:'中国高校计算机大赛-团体程序设计天梯赛', time:'3月-4月', apply:'2月-3月', level:'暂无', host:'教育部高等学校计算机类专业教学指导委员会等', url:'https://gplt.patest.cn/regulation', months:[3,4]},
+  {name:'中国高校计算机大赛-移动应用创新赛', time:'9月-11月', apply:'4月-6月', level:'暂无', host:'Apple公司赞助', url:'https://www.appcontest.net/', months:[9,10,11]},
+  {name:'深信服AI创新技术大赛', time:'11-12月', apply:'11-12月', level:'暂无', host:'深信服', nourl:'官方微信推文（原图链接不完整，见当年通知）', months:[11,12]}
+];
+
+var MONTH_NAMES = ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'];
+var MONTH_EN = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+
+function levelChip(level){
+  var s = level || '';
+  if(/国际|国家级/.test(s)) return '<span class="chip in">' + s + '</span>';
+  if(/省级|校级/.test(s)) return '<span class="chip g">' + s + '</span>';
+  return '<span class="chip p">' + (s || '暂无分级') + '</span>';
+}
+function linkHtml(c){
+  if(!c.url) return '<span class="c-nolink">' + (c.nourl || '官网见当年通知') + '</span>';
+  return '<a class="c-link" href="' + c.url + '" target="_blank" rel="noopener">官网 ↗</a>';
+}
+function cardHtml(c){
+  return '<article class="c">'
+    + '<div class="c-top">' + '<span class="c-name">' + c.name + '</span>' + levelChip(c.level) + '</div>'
+    + '<div class="c-time"><b>竞赛时间</b>' + c.time + (c.apply ? '　·　<b>报名</b>' + c.apply : '') + '</div>'
+    + (c.host ? '<div class="c-host">主办：' + c.host + '</div>' : '')
+    + '<div class="c-foot">' + linkHtml(c) + '</div>'
+    + '</article>';
+}
+
+function render(){
+  var nav = document.getElementById('monthNav');
+  for(var m=1;m<=12;m++){
+    nav.innerHTML += '<a href="#m' + m + '">' + m + '月</a>';
+  }
+  var tl = document.getElementById('timeline');
+  var html = '';
+  for(var m=1;m<=12;m++){
+    var items = DATA.filter(function(d){ return d.months && d.months.indexOf(m) !== -1; });
+    html += '<div class="month-row" id="m' + m + '">'
+      + '<div class="m-label"><div class="mo">' + m + '</div><div class="en">' + MONTH_EN[m-1] + '</div></div>'
+      + '<div class="m-axis"><span class="dot"></span><span class="stem"></span></div>'
+      + '<div class="m-cards">' + (items.length ? items.map(cardHtml).join('') : '<div class="empty">本月暂无固定赛程的科技类竞赛</div>') + '</div>'
+      + '</div>';
+  }
+  tl.innerHTML = html;
+  var pend = document.getElementById('pendingGrid');
+  pend.innerHTML = DATA.filter(function(d){ return !d.months; }).map(cardHtml).join('');
+}
+render();
+</script>
+</body>
+</html>
